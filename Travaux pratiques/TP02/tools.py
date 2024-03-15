@@ -24,15 +24,15 @@ def show(data_train):
 
 
 
-def test(data_valid):
+def test(delta, data_valid):
 
     df_valid = pd.read_csv(data_valid, names=["X", "Y"])
     
     X_valid = np.array(df_valid["X"].values)
     y_valid = np.array(df_valid["Y"].values)
-    
+    f = delta
     def prediction(x):
-        delta = X_valid.mean()
+        delta = f
         print("Frontière de décision: ", delta)
         return np.where(x < delta, 0, 1)
 
@@ -52,6 +52,7 @@ def test(data_valid):
     matrice_confusion = matrice_de_confusion(y_valid, y_pred)
     print("Matrice de confusion :")
     print(matrice_confusion)
+    print("Avec", len(df_valid),"données valides")
 
 
 

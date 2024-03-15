@@ -14,17 +14,13 @@ y_train = np.array(df["Y"].values) # ma matrice contenant les valeurs des classe
 x_classe0 = x_train[y_train==0]
 x_classe1 = x_train[y_train==1]
 
-# Nombre de données dans les differentes classes
-print("Il y'a ", (df["Y"] == 0).sum(), " données dans la classe 0")
-print("Il y'a ", (df["Y"] == 1).sum(), " données dans la classe 1")
-
 # Affichage des histogrammes
 plt.figure(figsize=(10,6))  
 plt.hist(x_classe0, bins=50, alpha=0.5, label="Classe 0", color="Blue")
 plt.hist(x_classe1, bins=50, alpha = 0.5, label="Classe 1", color="Red")
 plt.xlabel("Valeurs des caractéristiques")
 plt.ylabel("Effectifs")
-plt.title("Histogramme de repartition des caractéristiques")
+plt.title("Histogramme de repartition des caractéristiques: TP1_data")
 plt.legend()
 plt.show()
 # Visuellement je prendrai un delta = 147

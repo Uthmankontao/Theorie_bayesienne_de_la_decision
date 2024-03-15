@@ -26,6 +26,9 @@ def matrice_de_confusion(y_true, y_pred):
 
 
 matrice_confusion = matrice_de_confusion(y_valid, y_pred)
+# Nombre de données dans les differentes classes
+print("Il y'a ", (df["Y"] == 0).sum(), " données dans la classe 0")
+print("Il y'a ", (df["Y"] == 1).sum(), " données dans la classe 1")
 print("Matrice de confusion :")
 print(matrice_confusion)
 print("le nombre d'erreurs: ", nbre_erreurs)
