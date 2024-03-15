@@ -42,34 +42,35 @@ def Ultimate(data_train, data_valid):
     print(f"Nombre d'erreur: {nbre_erreurs}")
     print("Matrice de confusion :")
     print(matrice_confusion)
+    print(len(df_valid), "donnees")
 
 
 ############################################################################################################################################
                                                             #Test#
 print("####################################################################################################################################")
 print("DATA1\n")
-Ultimate(data_train="Travaux pratiques/TP03/tp3_data/tp3_data1_train.txt", data_valid="Travaux pratiques/TP03/tp3_data/tp3_data1_valid.txt")
+Ultimate(data_train="Travaux pratiques/TP02/tp2_data/tp2_data1_train.txt", data_valid="Travaux pratiques/TP02/tp2_data/tp2_data1_valid.txt")
 print("####################################################################################################################################")
 print("DATA2\n")
-Ultimate(data_train="Travaux pratiques/TP03/tp3_data/tp3_data2_train.txt", data_valid="Travaux pratiques/TP03/tp3_data/tp3_data2_valid.txt")
+Ultimate(data_train="Travaux pratiques/TP02/tp2_data/tp2_data2_train.txt", data_valid="Travaux pratiques/TP02/tp2_data/tp2_data2_valid.txt")
 print("####################################################################################################################################")
 print("DATA3\n")
-Ultimate(data_train="Travaux pratiques/TP03/tp3_data/tp3_data3_train.txt", data_valid="Travaux pratiques/TP03/tp3_data/tp3_data3_valid.txt")
-print("####################################################################################################################################")
+Ultimate(data_train="Travaux pratiques/TP02/tp2_data/tp2_data3_train.txt", data_valid="Travaux pratiques/TP02/tp2_data/tp2_data3_valid.txt")
+"""print("####################################################################################################################################")
 print("DATA4\n")
-Ultimate(data_train="Travaux pratiques/TP03/tp3_data/tp3_data4_train.txt", data_valid="Travaux pratiques/TP03/tp3_data/tp3_data4_valid.txt")
+Ultimate(data_train="Travaux pratiques/TP02/tp2_data/tp2_data4_train.txt", data_valid="Travaux pratiques/TP02/tp2_data/tp2_data4_valid.txt")
 print("####################################################################################################################################")
 print("DATA5\n")
-Ultimate(data_train="Travaux pratiques/TP03/tp3_data/tp3_data5_train.txt", data_valid="Travaux pratiques/TP03/tp3_data/tp3_data5_valid.txt")
+Ultimate(data_train="Travaux pratiques/TP02/tp2_data/tp2_data5_train.txt", data_valid="Travaux pratiques/TP02/tp2_data/tp2_data5_valid.txt")
 print("####################################################################################################################################")
 print("DATA6\n")
-Ultimate(data_train="Travaux pratiques/TP03/tp3_data/tp3_data6_train.txt", data_valid="Travaux pratiques/TP03/tp3_data/tp3_data6_valid.txt")
+Ultimate(data_train="Travaux pratiques/TP02/tp2_data/tp2_data6_train.txt", data_valid="Travaux pratiques/TP02/tp2_data/tp2_data6_valid.txt")
 print("####################################################################################################################################")
 print("DATA7\n")
-Ultimate(data_train="Travaux pratiques/TP03/tp3_data/tp3_data7_train.txt", data_valid="Travaux pratiques/TP03/tp3_data/tp3_data7_valid.txt")
+Ultimate(data_train="Travaux pratiques/TP02/tp2_data/tp2_data7_train.txt", data_valid="Travaux pratiques/TP02/tp2_data/tp2_data7_valid.txt")
     
 
-
+"""
 
 
 
