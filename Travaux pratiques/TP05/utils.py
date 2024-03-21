@@ -1,4 +1,3 @@
-from sklearn.linear_model import LogisticRegression
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
@@ -9,11 +8,12 @@ def Ultimate(data_train, data_valid):
     X_train = df_train[["x1", "x2"]].values
     y_train = df_train["y"].values
 
-    logistic_model = LogisticRegression()
-    logistic_model.fit(X_train, y_train)
-
     def prediction(x):
-        return logistic_model.predict(x.reshape(1, -1))[0]
+        a, b, c = -1, 1, 20
+        if (a * x[0] + b * x[1] + c > 0):
+            return 0
+        else:
+            return 1
 
     def plot_decision(x1_min, x1_max, x2_min, x2_max, prediction, sample = 300):
         """Uses Matplotlib to plot and fill a region with 2 colors
