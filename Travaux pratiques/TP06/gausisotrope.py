@@ -8,12 +8,27 @@ def Ultimate(data_train, data_valid):
     X_train = df_train[["x1", "x2"]].values
     y_train = df_train["y"].values
 
+    classe0 = df_train[df_train["y"]==0]
+    classe1 = df_train[df_train["y"]==1]
+
+    u0 = classe0[["x1","x2"]].mean()
+    u1 = classe1[["x1","x2"]].mean()
+    sigma2 = df_train[['x1', 'x2']].var().mean()
+
+
+    def pdf_gaussian(x, u, sigma2):
+
+        return (1.0 / np.sqrt(2 * np.pi * sigma2)) * np.exp(-((x - u) ** 2) / (2 * sigma2))
+
     def prediction(x):
-        a, b, c = -1, 1, -153
-        if (a * x[0] + b * x[1] + c > 0):
-            return 0
-        else:
-            return 1
+        
+        p_c0 = len(classe0) / len(df_train)
+        p_c1 = len(classe1) / len(df_train)
+        
+        p_x_sachant_c0 = pdf_gaussian(x[0], u0['x1'], sigma2) * pdf_gaussian(x[1], u0['x2'], sigma2) * p_c0
+        p_x_sachant_c1 = pdf_gaussian(x[0], u1['x1'], sigma2) * pdf_gaussian(x[1], u1['x2'], sigma2) * p_c1
+    
+        return 0 if p_x_sachant_c0 > p_x_sachant_c1 else 1
 
     def plot_decision(x1_min, x1_max, x2_min, x2_max, prediction, sample = 300):
         """Uses Matplotlib to plot and fill a region with 2 colors
@@ -45,7 +60,7 @@ def Ultimate(data_train, data_valid):
     plot_decision(x1_min, x1_max, x2_min, x2_max, prediction)
     plt.scatter(X_train[y_train == 0][:, 0], X_train[y_train == 0][:, 1], c='blue', marker='+', label='Classe 0')
     plt.scatter(X_train[y_train == 1][:, 0], X_train[y_train == 1][:, 1], c='orange', marker='x', label='Classe 1')
-    plt.title('Frontière de décision linéaire 1')
+    plt.title('Frontière de décision linéaire')
     plt.xlabel('x1')
     plt.ylabel('x2')
     plt.legend()
@@ -77,3 +92,5 @@ Ultimate(data_train="Travaux pratiques/TP05/tp5_data/tp5_data1_train.txt", data_
 print("{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}")
 print("Les resultats des données 2")
 Ultimate(data_train="Travaux pratiques/TP05/tp5_data/tp5_data2_train.txt", data_valid="Travaux pratiques/TP05/tp5_data/tp5_data2_valid.txt")
+
+
