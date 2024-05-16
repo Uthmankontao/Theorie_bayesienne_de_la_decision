@@ -13,11 +13,11 @@ def Ultimate(data_train, data_valid):
 
     u0 = classe0[["x1","x2"]].mean()
     u1 = classe1[["x1","x2"]].mean()
-    sigma2 = df_train[['x1', 'x2']].var().mean()
+    
+    """sigma2 = df_train[['x1', 'x2']].var().mean()
 
 
     def pdf_gaussian(x, u, sigma2):
-
         return (1.0 / np.sqrt(2 * np.pi * sigma2)) * np.exp(-((x - u) ** 2) / (2 * sigma2))
 
     def prediction(x):
@@ -28,7 +28,26 @@ def Ultimate(data_train, data_valid):
         p_x_sachant_c0 = pdf_gaussian(x[0], u0['x1'], sigma2) * pdf_gaussian(x[1], u0['x2'], sigma2) * p_c0
         p_x_sachant_c1 = pdf_gaussian(x[0], u1['x1'], sigma2) * pdf_gaussian(x[1], u1['x2'], sigma2) * p_c1
     
-        return 0 if p_x_sachant_c0 > p_x_sachant_c1 else 1
+        return 0 if p_x_sachant_c0 > p_x_sachant_c1 else 1"""
+    
+    p_c0 = len(classe0) / len(df_train)
+    p_c1 = len(classe1) / len(df_train)
+
+    print(p_c0)
+    print(p_c1)
+
+    def distance_euclidienne(x,u,p):
+        delta = x - u
+        distance  = (delta.T @ delta) 
+        return distance
+    
+    def prediction(x):
+        dist0 = distance_euclidienne(x, u0, p_c0)
+        dist1 = distance_euclidienne(x, u1, p_c1)
+        return 0 if dist0 < dist1 else 1
+
+        
+
 
     def plot_decision(x1_min, x1_max, x2_min, x2_max, prediction, sample = 300):
         """Uses Matplotlib to plot and fill a region with 2 colors
@@ -88,9 +107,15 @@ def Ultimate(data_train, data_valid):
     Validation(data_valid)
 
 print("Les resultats des données 1")
-Ultimate(data_train="Travaux pratiques/TP05/tp5_data/tp5_data1_train.txt", data_valid="Travaux pratiques/TP05/tp5_data/tp5_data1_valid.txt")
+Ultimate(data_train="TP05/tp5_data/tp5_data1_train.txt", data_valid="TP05/tp5_data/tp5_data1_valid.txt")
 print("{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}")
 print("Les resultats des données 2")
-Ultimate(data_train="Travaux pratiques/TP05/tp5_data/tp5_data2_train.txt", data_valid="Travaux pratiques/TP05/tp5_data/tp5_data2_valid.txt")
+Ultimate(data_train="TP05/tp5_data/tp5_data2_train.txt", data_valid="TP05/tp5_data/tp5_data2_valid.txt")
 
 
+
+print("Les resultats des données 1 du TP08")
+Ultimate(data_train="TP08/tp8_data/tp8_data1_train.txt", data_valid="TP08/tp8_data/tp8_data1_valid.txt")
+print("{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}{|}")
+print("Les resultats des données 2 du TP08")
+Ultimate(data_train="TP08/tp8_data/tp8_data2_train.txt", data_valid="TP08/tp8_data/tp8_data2_valid.txt")
